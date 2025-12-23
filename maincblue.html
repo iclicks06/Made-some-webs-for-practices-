@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We are Cblue</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #000, #001f3f);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .space {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite alternate;
+        }
+
+        .sun {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, yellow, orange, red);
+            border-radius: 50%;
+            box-shadow: 0 0 20px 10px rgba(255, 165, 0, 0.5); /* Add a glow effect */
+        }
+
+        .earth {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle at 30% 30%, blue, blue, green, blue);
+            border-radius: 50%;
+            box-shadow: 0 0 10px 5px rgba(0, 0, 255, 0.5); /* Add a glow effect */
+        }
+
+        .comet {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: white;
+            border-radius: 50%;
+            animation: comet 5s linear infinite;
+            box-shadow: 0 0 5px 2px white;
+        }
+
+        .spaceship {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    background: linear-gradient(to right, #3d3d3d, #777, #3d3d3d);
+    border-radius: 50px / 25px;
+    box-shadow: 0 0 10px 5px rgba(192, 192, 192, 0.5);
+    border: 2px solid #333;
+    animation: hover 3s infinite alternate;
+        }   
+
+        .spaceship::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 35px;
+            width: 30px;
+            height: 15px;
+            background: grey;
+            border-radius: 15px / 7.5px;
+            border: 2px solid #333;
+        }
+
+        .spaceship::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 40px;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(to top, #ff9800, #fcfbfb);
+            border-radius: 50%;
+            box-shadow: 0 0 15px 10px rgba(255, 165, 0, 0.7);
+            border: 2px solid #333;
+        }
+
+.window {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 60px;
+    height: 30px;
+    background: #aad;
+    border-radius: 15px / 7.5px;
+    border: 2px solid #333;
+}
+
+@keyframes hover {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-15px);
+    }
+}
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes comet {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(200vw, -200vh);
+                opacity: 0;
+            }
+        }
+
+        .center-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .center-text h1 {
+            margin: 20px;
+            font-family: Arial, sans-serif; /* Change to simple font */
+            font-weight: bold; /* Make the font bold */
+            font-size: 60px; /* Increase the font size */
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .button-container button {
+            background-color: #00008B; /* Dark blue color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .button-container button:hover {
+            background-color: white; /* Invert background color */
+            color: #00008B; /* Invert text color */
+        }
+    </style>
+</head>
+<body>
+    <div class="space">
+        <div class="sun"></div>
+        <div class="earth"></div>
+        <div class="center-text">
+            <h1>We are Cblue</h1>
+            <div class="button-container">
+                <button onclick="window.location.href='file:///E:/programming/HTML%20CSS/copilot/cbluesignin.html'">Sign In</button>
+                <button>Sign Up</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const space = document.querySelector('.space');
+        const sun = document.querySelector('.sun');
+        const earth = document.querySelector('.earth');
+
+        let sunX = Math.random() * window.innerWidth;
+        let sunY = Math.random() * window.innerHeight;
+        let sunSpeedX = 2;
+        let sunSpeedY = 2;
+
+        let earthX = Math.random() * window.innerWidth;
+        let earthY = Math.random() * window.innerHeight;
+        let earthSpeedX = 1.5;
+        let earthSpeedY = 1.5;
+
+        // Ensure initial positions of sun and earth do not overlap
+        if (Math.abs(sunX - earthX) < 150 && Math.abs(sunY - earthY) < 150) {
+            earthX = (sunX + 200) % window.innerWidth;
+            earthY = (sunY + 200) % window.innerHeight;
+        }
+
+        function moveSunAndEarth() {
+            sunX += sunSpeedX;
+            sunY += sunSpeedY;
+
+            if (sunX + sun.clientWidth >= window.innerWidth || sunX <= 0) {
+                sunSpeedX *= -1;
+            }
+            if (sunY + sun.clientHeight >= window.innerHeight || sunY <= 0) {
+                sunSpeedY *= -1;
+            }
+
+            sun.style.left = `${sunX}px`;
+            sun.style.top = `${sunY}px`;
+
+            earthX += earthSpeedX;
+            earthY += earthSpeedY;
+
+            if (earthX + earth.clientWidth >= window.innerWidth || earthX <= 0) {
+                earthSpeedX *= -1;
+            }
+            if (earthY + earth.clientHeight >= window.innerHeight || earthY <= 0) {
+                earthSpeedY *= -1;
+            }
+
+            // Ensure sun and earth do not overlap
+            if (Math.abs(sunX - earthX) < (sun.clientWidth + earth.clientWidth) / 2 &&
+                Math.abs(sunY - earthY) < (sun.clientHeight + earth.clientHeight) / 2) {
+                earthSpeedX *= -1;
+                earthSpeedY *= -1;
+            }
+
+            earth.style.left = `${earthX}px`;
+            earth.style.top = `${earthY}px`;
+
+            requestAnimationFrame(moveSunAndEarth);
+        }
+
+        function createStars() {
+            const numberOfStars = 50; // Adjust number of stars as needed
+
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.left = `${Math.random() * window.innerWidth}px`;
+                star.style.top = `${Math.random() * window.innerHeight}px`;
+                space.appendChild(star);
+            }
+        }
+
+        function createComets() {
+            const numberOfComets = 3; // Adjust number of comets as needed
+
+            for (let i = 0; i < numberOfComets; i++) {
+                const comet = document.createElement('div');
+                comet.classList.add('comet');
+                comet.style.left = `${Math.random() * window.innerWidth}px`;
+                comet.style.top = `${Math.random() * window.innerHeight}px`;
+                space.appendChild(comet);
+            }
+        }
+
+        function createSpaceships() {
+            const numberOfSpaceships = 3; // Adjust number of spaceships as needed
+
+            for (let i = 0; i < numberOfSpaceships; i++) {
+                const spaceship = document.createElement('div');
+                spaceship.classList.add('spaceship');
+                spaceship.style.left = `${Math.random() * window.innerWidth}px`;
+                spaceship.style.top = `${Math.random() * window.innerHeight}px`;
+                space.appendChild(spaceship);
+            }
+        }
+
+        createStars();
+        createComets();
+        createSpaceships();
+        moveSunAndEarth();
+    </script>
+</body>
+</html>

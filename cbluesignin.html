@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Cblue</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #000, #001f3f);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .space {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .star {
+            position: absolute;
+            width: 1px; /* Reduced size */
+            height: 1px; /* Reduced size */
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .mars {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(145deg, #ff4500, #a52a2a);
+            border-radius: 50%;
+            box-shadow: inset 10px 10px 20px #8b0000, inset -10px -10px 20px #ff6347;
+            animation: float 15s infinite alternate;
+            z-index: 0;
+        }
+
+        .mars::before {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 25%;
+            width: 15px;
+            height: 15px;
+            background: #ff8c00;
+            border-radius: 50%;
+        }
+
+        .mars::after {
+            content: '';
+            position: absolute;
+            top: 70%;
+            left: 60%;
+            width: 10px;
+            height: 10px;
+            background: #cd5c5c;
+            border-radius: 50%;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .moon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(145deg, #ddd, #999);
+            border-radius: 50%;
+            box-shadow: inset 10px 10px 20px #888, inset -10px -10px 20px #fff;
+            animation: float 10s infinite alternate;
+            z-index: 0;
+        }
+
+        .moon::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 30%;
+            width: 10px;
+            height: 10px;
+            background: #666;
+            border-radius: 50%;
+        }
+
+        .moon::after {
+            content: '';
+            position: absolute;
+            top: 60%;
+            left: 70%;
+            width: 8px;
+            height: 8px;
+            background: #444;
+            border-radius: 50%;
+        }
+
+        .comet {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(145deg, orange, red);
+            border-radius: 50%;
+            box-shadow: 0 0 15px 5px rgba(255, 165, 0, 0.5), 0 0 30px 10px rgba(255, 69, 0, 0.5);
+            animation: fly 7s infinite linear;
+        }
+
+        @keyframes fly {
+            0% {
+                transform: translateX(0) translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(500px) translateY(-500px) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        .sign-in-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #00008B; /* Dark blue without transparency */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            z-index: 1; /* Ensure the sign-in container is above the planets */
+        }
+
+        .sign-in-container h1 {
+            font-family: 'Poppins', sans-serif; /* Apply the Poppins font */
+            font-size: 32px;
+            font-weight: 700; /* Bold font */
+            margin-bottom: 20px;
+        }
+
+        .sign-in-container input {
+            width: calc(100% - 20px); /* Adjust width to include padding */
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .sign-in-container button {
+    background-color: white; /* Inverted background color */
+    color: #00008B; /* Dark blue text color */
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-right: 5px; /* Reduced margin between buttons */
+}
+
+
+        .sign-in-container button:hover {
+            background-color: #00008B; /* Dark blue background */
+            color: white; /* White text */
+        }
+
+        /* Go Back button styling */
+        .go-back-container {
+            display: inline-block;
+            margin-top: 10px; /* Adjust margin for spacing if needed */
+        }
+
+        .go-back-container button {
+            background-color: white;
+            color: #00008B;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .go-back-container button:hover {
+            background-color: #00008B;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="space">
+        <!-- Mars-like planet -->
+        <div class="mars" style="top: 30%; left: 25%;"></div>
+        <!-- Moons -->
+        <div class="moon" style="top: 60%; left: 20%;"></div>
+        <div class="moon" style="top: 20%; left: 70%;"></div>
+        <div class="moon" style="top: 80%; left: 50%;"></div>
+        <!-- Sign-In Container -->
+        <div class="sign-in-container">
+            <h1>Sign In</h1>
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <button>Sign In</button>
+            <div class="go-back-container">
+                <button onclick="location.href='file:///E:/programming/HTML%20CSS/copilot/maincblue.html'">Go Back</button>
+            </div>
+        </div>
+        <!-- Comets will be added here -->
+    </div>
+    <script>
+        const space = document.querySelector('.space');
+
+        function createStars() {
+            const numberOfStars = 100; // Increased number of stars
+
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.left = `${Math.random() * window.innerWidth}px`;
+                star.style.top = `${Math.random() * window.innerHeight}px`;
+                space.appendChild(star);
+            }
+        }
+
+        function createComets() {
+            const numberOfComets = 5; // Adjust number of comets as needed
+
+            for (let i = 0; i < numberOfComets; i++) {
+                const comet = document.createElement('div');
+                comet.classList.add('comet');
+                comet.style.left = `${Math.random() * window.innerWidth}px`;
+                comet.style.top = `${Math.random() * window.innerHeight}px`;
+                comet.style.animation = `fly ${Math.random() * 5 + 3}s infinite linear`;
+                space.appendChild(comet);
+            }
+        }
+        
+
+        createStars();
+        createComets();
+    </script>
+</body>
+</html>
